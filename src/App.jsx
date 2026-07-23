@@ -3,6 +3,7 @@ import { useFetchData } from './hooks/useFetchData';
 import Layout from './components/layout/layout';
 import KpiSection from './features/dashboard/KpiSection';
 import RecentOrdersTable from './features/dashboard/RecentOrdersTable';
+import ChartsSection from './features/dashboard/ChartsSection';
 
 function App() {
   const { data, loading, error } = useFetchData();
@@ -32,6 +33,9 @@ function App() {
         
         {/* Pass the raw data down as props */}
         <KpiSection orders={data} />
+
+        <ChartsSection orders={data} />
+        
         <RecentOrdersTable orders={data} />
       </div>
     </Layout>

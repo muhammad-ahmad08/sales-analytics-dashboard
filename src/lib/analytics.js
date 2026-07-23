@@ -14,3 +14,22 @@ export const calculateSalesKPIs = (orders) => {
     aov,
   };
 };
+
+// NEW: Formats raw API data into chart-friendly arrays
+export const formatChartData = (orders) => {
+  // 1. Revenue by User (Bar Chart)
+  // We map the orders to just user and revenue, sort highest to lowest, and take top 5
+  const revenueByUser = orders
+    .map(order => ({ name: `User ${order.userId}`, revenue: order.discountedTotal }))
+    .sort((a, b) => b.revenue - a.revenue)
+    .slice(0, 5);
+
+  // 2. Order Size Distribution (Donut Chart)
+  // We map the orders to cart ID and total items in that cart
+  const orderSizeDistribution = orders.map(order => ({
+    name: `Cart ${order.id}`,
+    value: order.totalQuantity
+  }));
+
+  return { revenueByUser, orderSizeDistribution };
+};
