@@ -1,6 +1,6 @@
 // src/App.jsx
-import { useState } from 'react';
 import { useFetchData } from './hooks/useFetchData';
+import { useOrderFilter } from './hooks/useOrderFilter'; 
 import Layout from './components/layout/Layout';
 import KpiSection from './features/dashboard/KpiSection';
 import ChartsSection from './features/dashboard/ChartsSection';
@@ -8,7 +8,9 @@ import RecentOrdersTable from './features/dashboard/RecentOrdersTable';
 
 function App() {
   const { data, loading, error } = useFetchData();
-  const [orderLimit, setOrderLimit] = useState(20);
+  
+  // Pass the raw data to our custom hook!
+  const { orderLimit, handleLimitChange, filteredData } = useOrderFilter(data);
 
   if (loading) {
     return (
@@ -28,8 +30,6 @@ function App() {
     );
   }
 
-  const filteredData = data.slice(0, orderLimit);
-
   return (
     <Layout>
       <div className="space-y-6">
@@ -41,7 +41,7 @@ function App() {
             <select 
               id="limit"
               value={orderLimit} 
-              onChange={(e) => setOrderLimit(Number(e.target.value))}
+              onChange={handleLimitChange} // <-- Use the handler from our hook
               className="px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value={5}>Last 5</option>
@@ -51,6 +51,7 @@ function App() {
           </div>
         </div>
 
+        {/* Pass the filteredData down to the components */}
         <KpiSection orders={filteredData} />
         <ChartsSection orders={filteredData} />
         <RecentOrdersTable orders={filteredData} />
