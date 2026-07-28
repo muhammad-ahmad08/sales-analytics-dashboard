@@ -1,5 +1,5 @@
 // src/features/dashboard/KpiSection.jsx
-import KpiCard from '../../components/ui/KpiCard';
+import KpiCard from '../../components/ui/kpiCard';
 import { calculateSalesKPIs } from '../../lib/analytics';
 
 export default function KpiSection({ orders }) {

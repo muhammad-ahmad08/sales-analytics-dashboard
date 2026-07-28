@@ -3,7 +3,7 @@ import { useFetchData } from './hooks/useFetchData';
 import { useOrderFilter } from './hooks/useOrderFilter'; 
 import Layout from './components/layout/layout';
 import KpiSection from './features/dashboard/kpiSection';
-import ChartsSection from './features/dashboard/ChartsSection';
+import ChartsSection from './features/dashboard/chartsSection';
 import RecentOrdersTable from './features/dashboard/recentOrdersTable';
 
 function App() {
