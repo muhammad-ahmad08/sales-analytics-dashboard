@@ -1,10 +1,10 @@
 // src/App.jsx
 import { useFetchData } from './hooks/useFetchData';
 import { useOrderFilter } from './hooks/useOrderFilter'; 
-import Layout from './components/layout/Layout';
-import KpiSection from './features/dashboard/KpiSection';
+import Layout from './components/layout/layout';
+import KpiSection from './features/dashboard/kpiSection';
 import ChartsSection from './features/dashboard/ChartsSection';
-import RecentOrdersTable from './features/dashboard/RecentOrdersTable';
+import RecentOrdersTable from './features/dashboard/recentOrdersTable';
 
 function App() {
   const { data, loading, error } = useFetchData();
