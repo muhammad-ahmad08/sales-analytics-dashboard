@@ -1,4 +1,5 @@
-Here is the complete `README.md` file. You can copy everything inside the code block below and paste it directly into your `README.md` file.
+<img width="1909" height="988" alt="image" src="https://github.com/user-attachments/assets/4f26541c-36d3-4e6b-83e3-226502f92a51" />
+
 
 ```markdown
 # 📊 E-Commerce Sales Analytics Dashboard
